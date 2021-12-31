@@ -1,0 +1,82 @@
+
+
+This guide will cover how to upgrade from EmbassyOS version 0.2.x to version 0.3.0.
+
+If you purchased the upgrade kit from us you can skip to <backing up> unless you received your kit before we completed 0.3.0, in which case please skip to <flashing> as you will need to flash 0.3.0 onto your SD card to continue migrating.
+
+If you have not purchased an upgrade kit from us you'll need the following equipment:
+
+1. A 16GB microSD card - recommended:
+https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073K14CVB/
+
+2. A 1TB solid state drive is recommended at a minimum if you want to keep a full archive of Bitcoin's history - doing so will improve certain aspects of your Embassy's performance and allow for applications that require it.
+2TB is of course better should you want more space. The larger the better, but after 2TB it starts to get much more expensive quickly.
+The drive we recommend:
+https://www.amazon.com/Crucial-MX500-NAND-SATA-Internal/dp/B078211KBB
+
+3. A connector for your drive like this:
+https://www.amazon.com/Sabrent-2-5-Inch-Adapter-Optimized-EC-SSHD/dp/B011M8YACM/ref=sr_1_3?crid=IP9CVCE40BLN&keywords=usb+sabrent+ssd&qid=1640909042&sprefix=usb+sabrent+s%2Caps%2C192&sr=8-3
+Or an enclosure like this:
+https://www.amazon.com/gp/product/B07T9D8F6C
+
+4. An SD card adaptor like this:
+https://www.amazon.com/gp/product/B000WR3Z3A
+
+Flashing
+
+Once you have all these you will need to download an 0.3.0 image from <link>. This is free for all existing customers. Anyone who is running 0.2.x who compiled it themselves will need to either compile 0.3.0 themselves or purchase an 0.3.0 image.
+
+Once you have the image, flash it on to the 16GB SD card - the new one, *not* the one currently in your Embassy!
+
+Backing up
+
+It is prudent to back up your Embassy before migrating in the off chance that something doesn't work correctly, or there is an accident of some sort.
+
+If you're unsure how to do this - please follow <this> guide.
+
+With your Embassy safely backed up, it's time to proceed with the migration.
+
+Migration
+
+Begin by going into your Embassy, stopping all running services, and shutting down the device in the Embassy tab.
+
+Once you've heard the power-off sound, wait a few more seconds and then safely unplug the Embassy.
+
+Next, remove the SD card that is in your Embassy and place it into the SD card adaptor, and then connect the adaptor to a USB port on your Embassy.
+
+Then take the new SD card with 0.3.0 on it and place it into the microSD card slot on your Embassy (not into the adaptor - that is for the old SD card!)
+
+Next, plug the SSD into one of the USB 3.0 ports (blue) on your Embassy, then reconnect the Ethernet cable if not already connected.
+
+Now the power cable can be connected and the Embassy powered up.
+
+Power Up
+
+The Embassy will self-install, a process of about 10 minutes. Once complete you should hear <this>
+
+On your computer, open up a browser and go to `embassy.local`
+
+You will be asked to enter a product key.
+
+This can be located on the bottom of your Embassy.
+
+Once entered, select "Recover" then select the microSD card - this will be labelled "rootfs".
+
+On the next page you will be asked to select a storage device - here you should select your SSD.
+
+?If it does not show up, please unplug it, plug it back in again and refresh your browser?
+
+If this drive is not empty, you will see a warning first. If you are happy to proceed, click continue.
+
+You will now need to make a password for your Embassy. This can be changed later on. It needs to be a strong password. This password protects your Embassy. It can be the same one that you used prior to migration, or a different one.
+
+The Embassy will now recover all your data from your old Embassy and once finished, you will hear <this>
+
+Now you will be provided with both a Tor and LAN address with which you can access your Embassy. Please make a note of these.
+
+To use LAN safely, the SSL certificate will need to be added to whatever device you are using to access. This can be downloaded by clicking on `download root CA` and installed by following the instructions <here>
+
+You can now log in to your Embassy via Tor or LAN and given the option of recovering on a service by service basis.
+
+For those recovering Bitwarden - it is now called Vaultwaren.
+
