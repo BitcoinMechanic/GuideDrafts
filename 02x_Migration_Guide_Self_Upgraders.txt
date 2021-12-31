@@ -28,6 +28,8 @@ Once you have all these you will need to download an 0.3.0 image from <link>. Th
 
 Once you have the image, flash it on to the 16GB SD card - the new one, *not* the one currently in your Embassy!
 
+The software we suggest using to flash your SD card is <balena etcher>
+
 Backing up
 
 It is prudent to back up your Embassy before migrating in the off chance that something doesn't work correctly, or there is an accident of some sort.
