@@ -2,6 +2,8 @@ This guide will cover how to upgrade from EmbassyOS version 0.2.x to version 0.3
 
 This guide assumes that you want to reuse the SSD you are currently using.
 
+If you want to use a different SSD you can skip the whole CIFS portion if you have a *powered* USB 3.0 hub so that you can temporarily have both the old and new SSDs plugged into your Embassy at the same time.
+
 You will need the following equipment:
 
 1. A 16GB microSD card - recommended. There is no advantage to having a larger card, it will just take longer to flash:
