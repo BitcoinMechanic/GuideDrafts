@@ -1,0 +1,123 @@
+This guide will cover how to upgrade from EmbassyOS version 0.2.x to version 0.3.0 for those running their 0.2.x Embassy off an SSD rather than a microSD card.
+
+This guide assumes that you want to reuse the SSD you are currently using.
+
+You will need the following equipment:
+
+1. A 16GB microSD card - recommended. There is no advantage to having a larger card, it will just take longer to flash:
+https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073K14CVB/
+
+2. A solid state drive (SSD). It is fine to use the SSD you have already been using, assuming it is large enough for your purposes - ideally 1TB at a minimum, especially if you want to run a full archival bitcoin node.
+The drive we recommend:
+https://www.amazon.com/Crucial-MX500-NAND-SATA-Internal/dp/B078211KBB
+
+3. A connector for your drive - you likely already have this given that you have been running your Embassy with this SSD. You may want an enclosure like this:
+https://www.amazon.com/gp/product/B07T9D8F6C
+
+4. An SD card adaptor like this:
+https://www.amazon.com/gp/product/B000WR3Z3A
+
+5. Another laptop/desktop on your LAN, ideally a linux machine, though this can be done with Windows/Mac also. If it's a mac, you will need enough data free space on its internal drive (or another mac readable external drive) to copy the contents of your Embassy SSD onto.
+
+Flashing
+
+Once you have all these you will need to download an 0.3.0 image from <link>. This is free for all existing customers. 
+
+If you compiled your 0.2.x Embassy yourself, you will need to purchase an image or compile 0.3.0 manually.
+
+Once you have the image, flash it on to the 16GB SD card using <Balena Etcher>
+
+Backing up
+
+It is prudent to back up your Embassy before migrating in the off chance that something doesn't work correctly, or there is an accident of some sort.
+
+If you're unsure how to do this - please follow <this> guide.
+
+Migrating
+
+Begin by going into your Embassy, stopping all running services, and shutting down the device in the Embassy tab.
+
+Once you've heard the power-off sound, wait a few more seconds and then safely unplug the Embassy.
+
+The next section will be broken down according to what OS you are running:
+
+Linux:
+
+Windows:
+
+1    Create a folder
+2    Right click the folder
+3    select "properties"
+4    click the share tab
+5    click share...
+6    select a user you want to use for login, or select everyone
+7    click share
+8    enter your computer name into the hostname field in embassy ui (the name is shown after a \\ in the windows ui)
+9    enter the path that is shown after the hostname in the windows ui into the path field
+10   enter your username for the windows computer
+11   enter the password for the windows computer
+
+Mac:
+
+Firstly, you will need to install linux in a VM or find some other way to get your mac to recognize the ext4 formatted SSD that contains your Embassy data.
+
+Assuming you installed something like Ubuntu in a VM and the drive was accessible, you'll need to copy the data of the drive over to a directory on your mac or another, mac readable drive. One method would be:
+
+-Connect the Embassy SSD to your Mac
+-Create a new folder on your Mac desktop
+-Name it embassyrootfs
+-Go into ubuntu
+-Open up terminal
+-In this example, the SSD is found at /media/parallels/rootfs
+-so `sudo -i`
+-cp -rv /media/parallels/rootfs/* ~/Desktop/Parallels\ Shared\ Folders/Home/Desktop/embassyrootfs
+
+Alternatively, you can change the last part there to a different external drive that is readable by your mac should you not have the space on your internal drive.
+
+Now you'll need to share the directory that you just copied everything into:
+
+-go to system settings
+-click sharing (note what it says at the top: "Computers on your local network can access your computer at:")
+-click file sharing
+-click the + under shared folders
+-add a folder
+-click options
+-enable Windows file sharing for the user you would like to use to authenticate
+-click done
+
+Now we are almost ready. Place the flashed SD card into your Embassy, eject and disconnect your SSD from your mac and connect it to your Embassy. Make sure ethernet is connected and power up the Embassy.
+
+After ~10 or so minutes you should it will make a sound indicating success!
+
+You can then to go `embassy.local` in your browser and enter your product key.
+
+On the next screen press "Recover".
+
+Now select "Share Network Folder":
+
+-Enter the name of your Mac, as shown in the computer name field at the top of the sharing page into the hostname field (alluded to above).
+-Enter the name of the folder as shown in the shared folders section as the path. No slash is necessary. In this case it will be /embassyrootfs
+-Enter your Mac username and password for the user that you enabled windows file sharing for. 
+
+Your Embassy should find the shared directory and then ask you to select a storage device:
+
+Here you should select your SSD.
+
+If it does not show up, please unplug it, plug it back in again and refresh your browser and repeat the steps above (you don't need to go through all the steps on your laptop/desktop again - just product key, and selecting the CIFS folder.)
+
+This drive (unless you are using a new one) will throw a warning as it already contains data. If you are happy to proceed, click continue.
+
+You will now need to make a password for your Embassy. It needs to be a strong password. This password protects your Embassy. It can be the same one that you used prior to migration, or a different one.
+
+The Embassy will now recover all your data from your old Embassy and once finished, you will hear <this>
+
+Now you will be provided with both a Tor and LAN address with which you can access your Embassy. Please make a note of these.
+
+To use LAN safely, the SSL certificate will need to be added to whatever device you are using to access. This can be downloaded by clicking on `download root CA` and installed by following the instructions <here>
+
+You can now log in to your Embassy via Tor or LAN and given the option of recovering on a service by service basis.
+
+For those recovering Bitwarden - it is now called Vaultwaren.
+
+
+
