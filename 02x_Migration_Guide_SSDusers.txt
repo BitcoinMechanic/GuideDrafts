@@ -119,7 +119,7 @@ To use LAN safely, the SSL certificate will need to be added to whatever device 
 
 You can now log in to your Embassy via Tor or LAN and given the option of recovering on a service by service basis.
 
-For those recovering Bitwarden - it is now called Vaultwaren.
+For those recovering Bitwarden - it is now called Vaultwarden.
 
 
 
